@@ -29,12 +29,36 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is React JS and what problems does it solve? Support your answer with concepts introduced in class and from your personal research on the web.
-
+ React is a libary that was developed my Facebook and it was meant to solve the effectivness of reloading ALL the content on a page by controlling the state and reloading only what was changed.
+ this is done by using useState and useEffect (when fetching data from api)
 1. Describe component state.
-
+Component state is the when we update information with setState(can be set(WhateverVaribleYourChanging))
+Example
+const [characters, setCharacters] = useState()
+we use the setCharacters to change the characters.
 1. Describe props.
+Props are the properties of a component they are passed in from above (parent) and can be used or deconstructed. 
+
+Example
+<CharactersMaker key={char.id} char={char}/> 
+
+<const CharactersMaker = (props) => {
+    // console.log(props)
+    const {gender,name,status,species,origin,location,image }= props.char
+Here we passed in information from char and it comes in as props on line 45.  then we deconstructe it to individual varibles that were already named inside of the props object.
 
 1. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
+Data fetching, setting up a subscription, and manually changing the DOM in React components are all examples of side effects. 
+Example 
+useEffect(() => {
+      Axios.get(BASECHAR_URL)
+        .then(res => {
+          setCharacters(res.data)
+        })
+        .catch(err => console.log(err))
+    },[] ) 
+
+we fetched data inside the useEffect and that is a side effect.  We sync with the use of setState and useState
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
