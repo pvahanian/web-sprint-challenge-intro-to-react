@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Axios from 'axios';
+import {BASECHAR_URL,BASELOCATION_URL,BASEEPISODE_URL} from './constants/index'
+// import Breweries from './components/Breweries';
 
-const App = () => {
+
+
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -9,11 +13,52 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
+  function App() {
+    // Delcare varibles to hold what we are pulling from each API and 
+    const [characters, setCharacters] = useState(null)
+    const [locations, setLocations] = useState([])
+    const [episdoes, setEpisdoes] = useState([])
+  
+    // export const BASECHAR_URL = 'https://rickandmortyapi.com/api/character'
+    // export const BASELOCATION_URL = 'https://rickandmortyapi.com/api/location'
+    // export const BASEEPISODE_URL = 'https://rickandmortyapi.com/api/episode'
+
+
+    useEffect(() => {
+      Axios.get(BASECHAR_URL)
+        .then(res => {
+          setCharacters(res.data)
+        })
+        .catch(err => console.log(err))
+    },[] ) 
+    
+    // useEffect(() => {
+    //   Axios.get('https://api.openbrewerydb.org/breweries')
+    //     .then(res => {
+    //       setState(res.data)
+    //     })
+    //     .catch(err => console.log(err))
+    // },[] )   
+    
+    // useEffect(() => {
+    //   Axios.get('https://api.openbrewerydb.org/breweries')
+    //     .then(res => {
+    //       setState(res.data)
+    //     })
+    //     .catch(err => console.log(err))
+    // },[] )  
+
+    console.log(characters)
+
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-    </div>
+      {characters &&
+      <h1> {characters && characters.info.count}</h1> 
+      }
+      </div>
   );
 }
 
 export default App;
+
