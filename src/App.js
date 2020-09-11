@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import CharactersMaker from './components/CharactersMaker'; 
 import './App.css';
 import Axios from 'axios';
-import {BASECHAR_URL,BASELOCATION_URL,BASEEPISODE_URL} from './constants/index'
+import {BASECHAR_URL,BASE_LOCATION_URL,BASE_EPISODE_URL} from './constants/index'
+
 // import Breweries from './components/Breweries';
 
 
@@ -33,28 +35,27 @@ import {BASECHAR_URL,BASELOCATION_URL,BASEEPISODE_URL} from './constants/index'
     },[] ) 
     
     // useEffect(() => {
-    //   Axios.get('https://api.openbrewerydb.org/breweries')
+    //   Axios.get(BASE_LOCATION_URL)
     //     .then(res => {
-    //       setState(res.data)
-    //     })
+    //       setLocations(res.data)
+    //       })
     //     .catch(err => console.log(err))
     // },[] )   
     
     // useEffect(() => {
-    //   Axios.get('https://api.openbrewerydb.org/breweries')
+    //   Axios.get(BASE_EPISODE_URL)
     //     .then(res => {
-    //       setState(res.data)
+    //       setEpisdoes(res.data)
     //     })
     //     .catch(err => console.log(err))
     // },[] )  
 
-    console.log(characters)
 
-  return (
+return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      {characters &&
-      <h1> {characters && characters.info.count}</h1> 
+      {
+        characters && characters.results.map(char => <CharactersMaker id={char.id} char={char}/>)
       }
       </div>
   );
