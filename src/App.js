@@ -3,8 +3,7 @@ import CharactersMaker from './components/CharactersMaker';
 import './App.css';
 import Axios from 'axios';
 import {BASECHAR_URL,BASE_LOCATION_URL,BASE_EPISODE_URL} from './constants/index'
-
-// import Breweries from './components/Breweries';
+import styled from "styled-components";
 
 
 
@@ -34,6 +33,14 @@ import {BASECHAR_URL,BASE_LOCATION_URL,BASE_EPISODE_URL} from './constants/index
         .catch(err => console.log(err))
     },[] ) 
     
+    
+  const MainWrapper = styled.div`
+      display: flex;
+      align-content: space-around;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+`;
     // useEffect(() => {
     //   Axios.get(BASE_LOCATION_URL)
     //     .then(res => {
@@ -51,14 +58,17 @@ import {BASECHAR_URL,BASE_LOCATION_URL,BASE_EPISODE_URL} from './constants/index
     // },[] )  
 
 
+
+
 return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      <div className="main-wrapper ">
+      <MainWrapper>
       {
         characters && characters.results.map(char => <CharactersMaker key={char.id} char={char}/>)
       }
-      </div>
+      </MainWrapper>
+     
       </div>
   );
 }
