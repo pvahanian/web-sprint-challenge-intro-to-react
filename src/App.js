@@ -55,7 +55,7 @@ return (
     <div className="App">
       <h1 className="Header">Characters</h1>
       {
-        characters && characters.results.map(char => <CharactersMaker id={char.id} char={char}/>)
+        characters && characters.results.map(char => <CharactersMaker key={char.id} char={char}/>)
       }
       </div>
   );

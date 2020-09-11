@@ -1,6 +1,6 @@
 export const BASECHAR_URL = 'https://rickandmortyapi.com/api/character'
-export const BASELOCATION_URL = 'https://rickandmortyapi.com/api/location'
-export const BASEEPISODE_URL = 'https://rickandmortyapi.com/api/episode'
+export const BASE_LOCATION_URL = 'https://rickandmortyapi.com/api/location'
+export const BASE_EPISODE_URL = 'https://rickandmortyapi.com/api/episode'
 
 
 //////////////////////////////////////////////////////////////////////                          {  CHAR API
