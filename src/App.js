@@ -54,9 +54,11 @@ import {BASECHAR_URL,BASE_LOCATION_URL,BASE_EPISODE_URL} from './constants/index
 return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+      <div className="main-wrapper ">
       {
         characters && characters.results.map(char => <CharactersMaker key={char.id} char={char}/>)
       }
+      </div>
       </div>
   );
 }
